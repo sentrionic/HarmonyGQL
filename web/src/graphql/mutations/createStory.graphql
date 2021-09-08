@@ -1,0 +1,10 @@
+mutation CreateStory($input: StoryInput!) {
+    createStory(input: $input) {
+        errors {
+            ...RegularError
+        }
+        story {
+            ...StorySnippet
+        }
+    }
+}

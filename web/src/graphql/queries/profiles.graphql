@@ -1,0 +1,5 @@
+query SearchProfiles($name: String!) {
+    searchProfiles(name: $name) {
+        ...RegularUser
+    }
+}

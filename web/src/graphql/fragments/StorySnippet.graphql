@@ -1,0 +1,16 @@
+fragment StorySnippet on Story {
+    id
+    createdAt
+    caption
+    image
+    likes
+    textSnippet
+    liked
+    commentsCount
+    slug
+    author {
+        id
+        username
+        image
+    }
+}

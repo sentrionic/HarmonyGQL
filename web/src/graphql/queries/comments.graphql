@@ -1,0 +1,8 @@
+query Comments($storyId: Int!, $limit: Int!, $cursor: String) {
+    getStoryComments(storyId: $storyId, limit: $limit, cursor: $cursor) {
+        hasMore
+        comments {
+            ...RegularComment
+        }
+    }
+}

@@ -1,0 +1,8 @@
+query Stories($limit: Int!, $cursor: String) {
+    getStories(limit: $limit, cursor: $cursor) {
+        hasMore
+        stories {
+            ...StorySnippet
+        }
+    }
+}

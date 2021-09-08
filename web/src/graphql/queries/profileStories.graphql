@@ -1,0 +1,8 @@
+query ProfileStories($profile: Int!, $limit: Int!, $cursor: String) {
+    getProfileStories(profile: $profile, limit: $limit, cursor: $cursor) {
+        hasMore
+        stories {
+            ...StorySnippet
+        }
+    }
+}

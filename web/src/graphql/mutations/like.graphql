@@ -1,0 +1,3 @@
+mutation Like($storyId: Int!) {
+    likeStory(storyId: $storyId)
+}

@@ -1,0 +1,12 @@
+query ProfileId($id: Int!) {
+    getProfileById(profileId: $id) {
+        ...RegularUser
+    }
+}
+
+query ProfileName($username: String!) {
+    getProfileByUsername(username: $username) {
+        ...RegularUser
+    }
+}
+

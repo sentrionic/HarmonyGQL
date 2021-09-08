@@ -1,0 +1,5 @@
+mutation UpdateProfileImage($image: Upload!) {
+    updateProfileImage(image: $image) {
+        ...RegularUserResponse
+    }
+}

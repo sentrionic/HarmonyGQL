@@ -1,0 +1,169 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Comment {
+  id: Float!
+  text: String!
+  createdAt: String!
+  author: User!
+  liked: Boolean!
+}
+
+type User {
+  id: Float!
+  username: String!
+  email: String!
+  image: String!
+  displayName: String!
+  description: String!
+  website: String!
+  createdAt: String!
+  updatedAt: String!
+  followers: Float!
+  following: Float!
+  posts: Float!
+  followed: Boolean!
+}
+
+type Story {
+  id: Float!
+  createdAt: String!
+  updatedAt: String!
+  slug: String!
+  image: String!
+  caption: String!
+  likes: Float!
+  tags: [String!]!
+  commentsCount: Float!
+  authorId: Float!
+  liked: Boolean!
+  author: User!
+  textSnippet: String!
+}
+
+type FieldError {
+  field: String!
+  message: String!
+}
+
+type UserResponse {
+  errors: [FieldError!]
+  user: User
+}
+
+type StoryResponse {
+  errors: [FieldError!]
+  story: Story
+}
+
+type PaginatedStories {
+  stories: [Story!]!
+  hasMore: Boolean!
+}
+
+type CommentResponse {
+  errors: [FieldError!]
+  comment: Comment
+}
+
+type PaginatedComments {
+  comments: [Comment!]!
+  hasMore: Boolean!
+}
+
+type Query {
+  getStories(cursor: String, limit: Int!): PaginatedStories!
+  getProfileStories(profile: Int!, cursor: String, limit: Int!): PaginatedStories!
+  getFollowedStories(cursor: String, limit: Int!): PaginatedStories!
+  getLikedStories(cursor: String, limit: Int!): PaginatedStories!
+  getStoryById(id: Int!): Story
+  getStoryBySlug(slug: String!): Story
+  me: User
+  getProfileById(profileId: Int!): User
+  getProfileByUsername(username: String!): User
+  searchProfiles(name: String!): [User!]
+  getStoryComments(cursor: String, limit: Int!, storyId: Int!): PaginatedComments
+}
+
+type Mutation {
+  createStory(input: StoryInput!): StoryResponse!
+  updateStory(caption: String!, id: Int!): Story
+  deleteStory(id: Int!): Boolean!
+  likeStory(storyId: Int!): Boolean!
+  register(options: UsernamePasswordInput!): UserResponse!
+  login(password: String!, usernameOrEmail: String!): UserResponse!
+  logout: Boolean!
+  forgotPassword(email: String!): Boolean!
+  resetPassword(input: ResetPasswordInput!): UserResponse!
+  changePassword(input: ChangePasswordInput!): UserResponse!
+  updateUser(input: UserInput!): UserResponse!
+  updateProfileImage(image: Upload!): UserResponse!
+  followUser(profileId: Int!): Boolean!
+  postComment(
+    """Min 3, max 500 characters"""
+    text: String!
+    storyId: Int!
+  ): CommentResponse!
+}
+
+input StoryInput {
+  """Min 10, max 500 characters"""
+  caption: String!
+  image: Upload!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input UsernamePasswordInput {
+  """Unique. Min 3, max 30 alphanumeric characters."""
+  username: String!
+
+  """Unique. Must be a valid email."""
+  email: String!
+
+  """Min 6, max 150 characters."""
+  password: String!
+
+  """Must be the same as the password value."""
+  confirmPassword: String!
+}
+
+input ResetPasswordInput {
+  """The from the email provided token."""
+  token: String!
+
+  """Min 6, max 150 characters."""
+  newPassword: String!
+
+  """Must be the same as the newPassword value."""
+  confirmNewPassword: String!
+}
+
+input ChangePasswordInput {
+  currentPassword: String!
+
+  """Min 6, max 150 characters."""
+  newPassword: String!
+
+  """Must be the same as the newPassword value."""
+  confirmNewPassword: String!
+}
+
+input UserInput {
+  """Unique. Min 3, max 30 alphanumeric characters."""
+  username: String!
+
+  """Unique. Must be a valid email."""
+  email: String!
+
+  """Min 3, max 50 characters."""
+  displayName: String
+
+  """Max 250 characters."""
+  description: String
+
+  """Must be a valid website."""
+  website: String
+}

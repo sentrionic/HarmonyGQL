@@ -1,0 +1,8 @@
+query LikedStories($limit: Int!, $cursor: String) {
+    getLikedStories(limit: $limit, cursor: $cursor) {
+        hasMore
+        stories {
+            ...StorySnippet
+        }
+    }
+}

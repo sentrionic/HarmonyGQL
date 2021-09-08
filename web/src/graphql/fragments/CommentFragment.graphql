@@ -1,0 +1,11 @@
+fragment RegularComment on Comment {
+    id
+    createdAt
+    text
+    liked
+    author {
+        id
+        username
+        image
+    }
+}

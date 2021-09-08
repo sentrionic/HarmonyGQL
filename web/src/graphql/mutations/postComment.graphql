@@ -1,0 +1,10 @@
+mutation PostComment($storyId: Int!, $text: String!) {
+    postComment(text: $text, storyId: $storyId) {
+        errors {
+            ...RegularError
+        }
+        comment {
+            ...RegularComment
+        }
+    }
+}

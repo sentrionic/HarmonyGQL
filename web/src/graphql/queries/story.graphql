@@ -1,0 +1,12 @@
+query StoryId($id: Int!) {
+    getStoryById(id: $id) {
+        ...StorySnippet
+    }
+}
+
+query StorySlug($slug: String!) {
+    getStoryBySlug(slug: $slug) {
+        ...StorySnippet
+    }
+}
+

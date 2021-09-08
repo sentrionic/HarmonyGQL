@@ -1,0 +1,8 @@
+query FollowedStories($limit: Int!, $cursor: String) {
+    getFollowedStories(limit: $limit, cursor: $cursor) {
+        hasMore
+        stories {
+            ...StorySnippet
+        }
+    }
+}
